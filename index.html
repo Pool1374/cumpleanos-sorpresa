@@ -6,34 +6,25 @@
   <title>💖 Un detalle especial para ti 💖</title>
   <style>
     :root {
-      --bg-light: radial-gradient(circle, #ffd6e0, #ff758f, #590d22);
-      --bg-dark: radial-gradient(circle, #1c1c1c, #2a0035);
+      --bg-light: radial-gradient(circle, #ffb3c1, #590d22);
+      --bg-dark: radial-gradient(circle, #0b0b0b, #2c003e);
       --text-light: white;
-      --text-dark: #eee;
+      --text-dark: #e0e0e0;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html, body {
-      height: 100%;
-      width: 100%;
-    }
-
-    body {
+      margin: 0;
+      padding: 0;
+      height: auto;
+      min-height: 100vh;
+      font-family: 'Arial', sans-serif;
       background: var(--bg-light);
-      font-family: 'Segoe UI', sans-serif;
       color: var(--text-light);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem;
-      transition: background 0.5s, color 0.5s;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     body.dark-mode {
@@ -41,133 +32,56 @@
       color: var(--text-dark);
     }
 
-    .content {
+    .container {
+      max-width: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      max-width: 800px;
-      width: 100%;
+      justify-content: flex-start;
+      padding: 2em 1em;
+      text-align: center;
       position: relative;
-      z-index: 2;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .heart-bg {
-      position: absolute;
-      width: 320px;
-      height: 280px;
-      background-color: rgba(255, 192, 203, 0.15);
-      z-index: 0;
-      border-radius: 50% 50% 0 0;
-      transform: rotate(45deg);
-      box-shadow: 0 0 50px rgba(255, 0, 100, 0.2);
-      animation: pulse 2s infinite ease-in-out;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-
-    .heart-bg::before,
-    .heart-bg::after {
-      content: '';
-      position: absolute;
-      width: 320px;
-      height: 280px;
-      background-color: inherit;
-      border-radius: 50% 50% 0 0;
-    }
-
-    .heart-bg::before { left: -160px; }
-    .heart-bg::after { top: -160px; }
-
-    @keyframes pulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(45deg); }
-      50% { transform: translate(-50%, -50%) scale(1.05) rotate(45deg); }
-    }
-
-    .heart-container {
-      position: relative;
-      animation: float 4s ease-in-out infinite;
-      margin-bottom: 1.5rem;
       z-index: 1;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 1em;
     }
 
-    .photo-display {
-      width: 90vw;
+    .image-container img {
+      width: 80vw;
       max-width: 400px;
-      height: auto;
       border-radius: 20px;
-      box-shadow:
-        0 0 20px rgba(255, 0, 0, 0.5),
-        0 0 40px rgba(0, 255, 0, 0.4),
-        0 0 60px rgba(0, 0, 255, 0.3),
-        0 0 80px rgba(255, 105, 180, 0.2);
-      animation: heartbeat 1.5s infinite ease-in-out, rgb-glow 5s infinite linear;
+      box-shadow: 0 0 20px red, 0 0 40px blue, 0 0 60px green;
+      animation: glow 3s ease-in-out infinite alternate;
     }
 
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    @keyframes rgb-glow {
-      0% {
-        box-shadow:
-          0 0 15px rgba(255, 0, 0, 0.6),
-          0 0 25px rgba(255, 0, 0, 0.4),
-          0 0 35px rgba(255, 0, 0, 0.2);
-      }
-      33% {
-        box-shadow:
-          0 0 15px rgba(0, 255, 0, 0.6),
-          0 0 25px rgba(0, 255, 0, 0.4),
-          0 0 35px rgba(0, 255, 0, 0.2);
-      }
-      66% {
-        box-shadow:
-          0 0 15px rgba(0, 0, 255, 0.6),
-          0 0 25px rgba(0, 0, 255, 0.4),
-          0 0 35px rgba(0, 0, 255, 0.2);
-      }
-      100% {
-        box-shadow:
-          0 0 15px rgba(255, 0, 0, 0.6),
-          0 0 25px rgba(255, 0, 0, 0.4),
-          0 0 35px rgba(255, 0, 0, 0.2);
-      }
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px red, 0 0 20px blue, 0 0 30px green; }
+      100% { box-shadow: 0 0 20px green, 0 0 40px red, 0 0 60px blue; }
     }
 
     .message {
-      font-size: 1rem;
+      font-size: 1.1em;
+      margin: 2em 0;
       line-height: 1.6;
       max-width: 90%;
-      white-space: pre-wrap;
-      margin-bottom: 1.5rem;
-      z-index: 2;
     }
 
     .controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 1em;
       justify-content: center;
-      z-index: 2;
+      gap: 1em;
+      margin-top: 1em;
     }
 
     button {
-      background-color: #ffffffcc;
+      background-color: #ffffffaa;
       border: none;
-      padding: 0.7em 1.4em;
+      padding: 0.6em 1.2em;
       font-size: 1em;
       border-radius: 10px;
       cursor: pointer;
@@ -175,27 +89,46 @@
     }
 
     button:hover {
-      background-color: #fff;
+      background-color: #ffffffdd;
     }
 
     body.dark-mode button {
-      background-color: #444;
+      background-color: #333;
       color: #fff;
     }
 
-    @media (min-width: 768px) {
-      h1 { font-size: 2.5rem; }
-      .message { font-size: 1.1rem; max-width: 700px; }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+      .message { font-size: 1em; }
+      button { font-size: 0.9em; }
+    }
+
+    .heart {
+      position: fixed;
+      top: -2em;
+      font-size: 1.5em;
+      color: #ff1a75;
+      text-shadow: 0 0 10px #ff1a75, 0 0 20px #ff1a75;
+      pointer-events: none;
+      animation-name: fall;
+      animation-timing-function: linear;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="heart-bg"></div>
-  <div class="content">
-    <h1>💖 Un detalle especial para ti 💖</h1>
+  <div class="container">
+    <h1>💖 Un detalle especial para ti, mi amor 💖</h1>
 
-    <div class="heart-container">
-      <img src="foto/foto.jpg" alt="Foto especial" class="photo-display" />
+    <div class="image-container">
+      <img src="Foto/foto.jpg" alt="Foto especial" />
     </div>
 
     <p class="message" id="message"></p>
@@ -203,18 +136,16 @@
     <div class="controls">
       <button onclick="restartMessage()">🔁 Reiniciar mensaje</button>
       <button onclick="toggleDarkMode()">🌙 Modo oscuro</button>
-      <button onclick="playMusic()">🎵 Música</button>
+      <button onclick="playMusic()">🎵 Reproducir música</button>
     </div>
   </div>
 
   <audio id="bg-music" loop>
-    <source src="musica/aqui.mp3" type="audio/mp3" />
+    <source src="musica/aqui.mp3" type="audio/mp3">
   </audio>
 
   <script>
-    const messageText = `¡Feliz cumpleaños, mis cachetitos ❤❤! 🎂🎂🥳 Hoy celebro no solo el día en que llegaste a este mundo, sino también la suerte tan grande que tengo de tenerte a mi lado ❤😘😍. Eres mi sol ☀, mi alegría 😁, la persona que ilumina cada uno de mis días con tu sonrisa 💘 y tu forma de ser tan especial. ❤🫶💞💞. 
-Espero que este nuevo año de vida te traiga todo lo que deseas 💗 y más 👀❤, que esté lleno de momentos inolvidables, muchas risas y pura felicidad. 😚🫶❤
-Sabes que siempre contarás conmigo 🫶🫶, en las buenas y en las no tan buenas 😅❤, para acompañarte en cada paso.💖. Te amo con todo mi corazón😍❤, mis cachetitos preciosos.❤🥺. Festejaremos este día juntos amor 😚❤`;
+    const messageText = `¡Feliz cumpleaños, mis cachetitos ❤❤! 🎂🎂🥳 Hoy celebro no solo el día en que llegaste a este mundo, sino también la suerte tan grande que tengo de tenerte a mi lado ❤😘😍. Eres mi sol ☀, mi alegría 😁, la persona que ilumina cada uno de mis días con tu sonrisa 💘 y tu forma de ser tan especial. ❤🫶💞💞. \nEspero que este nuevo año de vida te traiga todo lo que deseas 💗 y más 👀❤, que esté lleno de momentos inolvidables, muchas risas y pura felicidad. 😚🫶❤\nSabes que siempre contarás conmigo 🫶🫶, en las buenas y en las no tan buenas 😅❤, para acompañarte en cada paso.💖. Te amo con todo mi corazón😍❤, mis cachetitos preciosos.❤🥺. Festejaremos este día juntos amor 😚❤`;
 
     const messageElement = document.getElementById("message");
     let index = 0;
@@ -224,15 +155,16 @@ Sabes que siempre contarás conmigo 🫶🫶, en las buenas y en las no tan buen
       if (index < messageText.length) {
         messageElement.textContent += messageText[index];
         index++;
-        typingInterval = setTimeout(typeMessage, 45);
+      } else {
+        clearInterval(typingInterval);
       }
     }
 
     function restartMessage() {
-      clearTimeout(typingInterval);
-      messageElement.textContent = "";
+      clearInterval(typingInterval);
       index = 0;
-      typeMessage();
+      messageElement.textContent = "";
+      typingInterval = setInterval(typeMessage, 40);
     }
 
     function toggleDarkMode() {
@@ -240,11 +172,24 @@ Sabes que siempre contarás conmigo 🫶🫶, en las buenas y en las no tan buen
     }
 
     function playMusic() {
-      const music = document.getElementById("bg-music");
-      music.play();
+      const audio = document.getElementById("bg-music");
+      audio.play();
     }
 
-    document.addEventListener('DOMContentLoaded', typeMessage);
+    restartMessage();
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 3 + Math.random() * 5 + "s";
+      heart.style.fontSize = (Math.random() * 1.5 + 1) + "em";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    setInterval(createHeart, 300);
   </script>
 </body>
 </html>
