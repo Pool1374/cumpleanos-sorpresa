@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💖 Un detalle especial para ti 💖</title>
+  <style>
+    :root {
+      --bg-light: radial-gradient(circle, #ffd6e0, #ff758f, #590d22);
+      --bg-dark: radial-gradient(circle, #1c1c1c, #2a0035);
+      --text-light: white;
+      --text-dark: #eee;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background: var(--bg-light);
+      font-family: 'Segoe UI', sans-serif;
+      color: var(--text-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      transition: background 0.5s, color 0.5s;
+      overflow: hidden;
+    }
+
+    body.dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 800px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .heart-bg {
+      position: absolute;
+      width: 320px;
+      height: 280px;
+      background-color: rgba(255, 192, 203, 0.15);
+      z-index: 0;
+      border-radius: 50% 50% 0 0;
+      transform: rotate(45deg);
+      box-shadow: 0 0 50px rgba(255, 0, 100, 0.2);
+      animation: pulse 2s infinite ease-in-out;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .heart-bg::before,
+    .heart-bg::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 280px;
+      background-color: inherit;
+      border-radius: 50% 50% 0 0;
+    }
+
+    .heart-bg::before { left: -160px; }
+    .heart-bg::after { top: -160px; }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(45deg); }
+      50% { transform: translate(-50%, -50%) scale(1.05) rotate(45deg); }
+    }
+
+    .heart-container {
+      position: relative;
+      animation: float 4s ease-in-out infinite;
+      margin-bottom: 1.5rem;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .photo-display {
+      width: 90vw;
+      max-width: 400px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.5),
+        0 0 40px rgba(0, 255, 0, 0.4),
+        0 0 60px rgba(0, 0, 255, 0.3),
+        0 0 80px rgba(255, 105, 180, 0.2);
+      animation: heartbeat 1.5s infinite ease-in-out, rgb-glow 5s infinite linear;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes rgb-glow {
+      0% {
+        box-shadow:
+          0 0 15px rgba(255, 0, 0, 0.6),
+          0 0 25px rgba(255, 0, 0, 0.4),
+          0 0 35px rgba(255, 0, 0, 0.2);
+      }
+      33% {
+        box-shadow:
+          0 0 15px rgba(0, 255, 0, 0.6),
+          0 0 25px rgba(0, 255, 0, 0.4),
+          0 0 35px rgba(0, 255, 0, 0.2);
+      }
+      66% {
+        box-shadow:
+          0 0 15px rgba(0, 0, 255, 0.6),
+          0 0 25px rgba(0, 0, 255, 0.4),
+          0 0 35px rgba(0, 0, 255, 0.2);
+      }
+      100% {
+        box-shadow:
+          0 0 15px rgba(255, 0, 0, 0.6),
+          0 0 25px rgba(255, 0, 0, 0.4),
+          0 0 35px rgba(255, 0, 0, 0.2);
+      }
+    }
+
+    .message {
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 90%;
+      white-space: pre-wrap;
+      margin-bottom: 1.5rem;
+      z-index: 2;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    button {
+      background-color: #ffffffcc;
+      border: none;
+      padding: 0.7em 1.4em;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #fff;
+    }
+
+    body.dark-mode button {
+      background-color: #444;
+      color: #fff;
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      .message { font-size: 1.1rem; max-width: 700px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="heart-bg"></div>
+  <div class="content">
+    <h1>💖 Un detalle especial para ti 💖</h1>
+
+    <div class="heart-container">
+      <img src="foto/foto.jpg" alt="Foto especial" class="photo-display" />
+    </div>
+
+    <p class="message" id="message"></p>
+
+    <div class="controls">
+      <button onclick="restartMessage()">🔁 Reiniciar mensaje</button>
+      <button onclick="toggleDarkMode()">🌙 Modo oscuro</button>
+      <button onclick="playMusic()">🎵 Música</button>
+    </div>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="musica/aqui.mp3" type="audio/mp3" />
+  </audio>
+
+  <script>
+    const messageText = `¡Feliz cumpleaños, mis cachetitos ❤❤! 🎂🎂🥳 Hoy celebro no solo el día en que llegaste a este mundo, sino también la suerte tan grande que tengo de tenerte a mi lado ❤😘😍. Eres mi sol ☀, mi alegría 😁, la persona que ilumina cada uno de mis días con tu sonrisa 💘 y tu forma de ser tan especial. ❤🫶💞💞. 
+Espero que este nuevo año de vida te traiga todo lo que deseas 💗 y más 👀❤, que esté lleno de momentos inolvidables, muchas risas y pura felicidad. 😚🫶❤
+Sabes que siempre contarás conmigo 🫶🫶, en las buenas y en las no tan buenas 😅❤, para acompañarte en cada paso.💖. Te amo con todo mi corazón😍❤, mis cachetitos preciosos.❤🥺. Festejaremos este día juntos amor 😚❤`;
+
+    const messageElement = document.getElementById("message");
+    let index = 0;
+    let typingInterval;
+
+    function typeMessage() {
+      if (index < messageText.length) {
+        messageElement.textContent += messageText[index];
+        index++;
+        typingInterval = setTimeout(typeMessage, 45);
+      }
+    }
+
+    function restartMessage() {
+      clearTimeout(typingInterval);
+      messageElement.textContent = "";
+      index = 0;
+      typeMessage();
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function playMusic() {
+      const music = document.getElementById("bg-music");
+      music.play();
+    }
+
+    document.addEventListener('DOMContentLoaded', typeMessage);
+  </script>
+</body>
+</html>
